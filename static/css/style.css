@@ -156,10 +156,10 @@ header {
     width: calc(100% - 1rem);
 }
 
-.form-group .form-label .required-field {
+.form-group .form-label.label-required::after {
     color: #ff0101;
+    content: '*';
     font-size: .75rem;
-    cursor: pointer;
 }
 
 .form-group .form-input,

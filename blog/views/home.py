@@ -10,6 +10,6 @@ class HomeView(View):
         last_articles = ArticleModel.objects.filter(draft=False)[:5]
         return render(
             request,
-            'views/home.html',
+            'views/home.jhtml',
             {'title': 'Главная', 'last_articles': last_articles}
         )
