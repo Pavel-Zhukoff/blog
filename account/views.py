@@ -1,9 +1,8 @@
 from django.contrib.auth import views
-from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 
-from blog.forms import UserLoginForm, UserRegisterForm
+from account.forms import UserLoginForm, UserRegisterForm
 
 
 class LoginCustomView(views.LoginView):
