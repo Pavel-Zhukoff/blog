@@ -3,7 +3,7 @@
 
 {% block content %}
     <section class="section">
-        <h2 class="section-title">Регистрация</h2>
+        <h2 class="section-title">Создание блога</h2>
 
         <form method="post" class="form form-centered">
 
@@ -28,7 +28,7 @@
             {% endfor %}
 
             <div class="form-group">
-                <button type="submit" class="button-default">Войти</button>
+                <button type="submit" class="button-default">Создать</button>
             </div>
         </form>
     </section>

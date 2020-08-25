@@ -126,8 +126,7 @@ header .right {
     left: 20%;
 }
 
-.login-form,
-.register-form {
+.form-centered {
     width: 50%;
     margin: 0 auto;
 }
