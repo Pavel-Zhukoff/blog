@@ -1,5 +1,4 @@
 {% extends 'base.jhtml' %}
-{% block title %}{{ title }}{% endblock %}
 {% block content %}
         <h1 class="page-title">
         Главная
