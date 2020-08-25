@@ -13,7 +13,7 @@
         {% endif %}
             <div class="menu">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'blog_new' %}" class="menu-item">Новый пост</a>
+                    <a href="{% url 'blog-new' %}" class="menu-item">Новый блог</a>
                     <a href="#" class="menu-item">Аккаунт</a>
                     <a href="{% url 'logout' %}" class="menu-item">Выйти</a>
                 {% else %}

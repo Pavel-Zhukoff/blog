@@ -22,7 +22,7 @@ import study1.settings as settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
-    path('', include('account.urls')),
+    path('account/', include('account.urls')),
 ]
 
 if settings.DEBUG:

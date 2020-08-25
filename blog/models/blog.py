@@ -14,6 +14,9 @@ class BlogModel(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return ' {}'.format(self.id)
+
     class Meta:
         db_table = 'blog'
 

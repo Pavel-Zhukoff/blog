@@ -1,0 +1,22 @@
+{% extends  'base.jhtml' %}
+{% load widget_tweaks %}
+
+{% block content %}
+        <h2 class="page-title">Блог {{ object.name }} {{ object.user.username }}</h2>
+
+        <div class="content">
+            <div class="section">
+            <h2 class="section-title">Записи блога</h2>
+            <div class="section-content">
+                {% for article in articles %}
+                <div>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.text }}</p>
+                    <p><small>Дата публикации: {{ article.creation_date }} | Автор: {{ article.blog.user.username }}</small></p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        </div>
+{% endblock %}
