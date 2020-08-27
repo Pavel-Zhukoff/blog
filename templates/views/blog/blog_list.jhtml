@@ -7,8 +7,8 @@
             <div class="section">
             <div class="section-content">
                 {% for blog in blog_list %}
-                <div>
-                    <h3>Название блога: {{ blog.name }}</h3>
+                <div style="margin: 1rem 0;">
+                    <h3><a href="{% url 'blog-detail' blog.id %}">Название блога: {{ blog.name }}</a></h3>
                     <p><small>Дата создания: {{ blog.creation_date }} | Автор: {{ blog.user.username }}</small></p>
                 </div>
                 {% endfor %}

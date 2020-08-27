@@ -3,7 +3,8 @@
 
         <div class="left">
             <nav class="menu">
-                <a href="#" class="menu-item">Пункт меню</a>
+                <a href="{% url 'blog-list' %}" class="menu-item">Блоги</a>
+                <a href="#" class="menu-item">Меню</a>
             </nav>
         </div>
 
@@ -13,7 +14,11 @@
         {% endif %}
             <div class="menu">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'blog-new' %}" class="menu-item">Новый блог</a>
+                    {% if user_blogs|length > 0 %}
+                        <a href="#" class="menu-item">Новая статья</a>
+                    {% else %}
+                        <a href="{% url 'blog-new' %}" class="menu-item">Новый блог</a>
+                    {% endif %}
                     <a href="#" class="menu-item">Аккаунт</a>
                     <a href="{% url 'logout' %}" class="menu-item">Выйти</a>
                 {% else %}

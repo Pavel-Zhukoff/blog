@@ -18,7 +18,7 @@
                 <div>
                     <h3>{{ last_article.title }}</h3>
                     <p>{{ last_article.text }}</p>
-                    <p><small>Дата публикации: {{ last_article.creation_date }} | Автор: {{ last_article.blog.user.username }}</small></p>
+                    <p><small>Дата публикации: {{ last_article.creation_date }} | Автор: <a href="{% url 'blog-list-author' last_article.blog.user.username %}">{{ last_article.blog.user.username }}</a></small></p>
                 </div>
                 {% endfor %}
 

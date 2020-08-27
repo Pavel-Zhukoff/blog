@@ -12,6 +12,9 @@ class ArticleModel(models.Model):
     tags = models.ManyToManyField(TagModel, verbose_name='Теги')
     draft = models.BooleanField(default=True, verbose_name='Черновик')
 
+    def get_absolute_url(self):
+        return '{}'.format(self.id)
+
     class Meta:
         db_table = 'article'
 
