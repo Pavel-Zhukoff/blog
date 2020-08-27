@@ -15,7 +15,7 @@
             <h2 class="section-title">Последние записи</h2>
             <div class="section-content">
                 {% for last_article in last_articles %}
-                <div>
+                <div style="margin: .75rem 0">
                     <h3>{{ last_article.title }}</h3>
                     <p>{{ last_article.text }}</p>
                     <p><small>Дата публикации: {{ last_article.creation_date }} | Автор: <a href="{% url 'blog-list-author' last_article.blog.user.username %}">{{ last_article.blog.user.username }}</a></small></p>

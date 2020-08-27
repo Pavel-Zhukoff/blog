@@ -14,11 +14,8 @@
         {% endif %}
             <div class="menu">
                 {% if user.is_authenticated %}
-                    {% if user_blogs|length > 0 %}
-                        <a href="#" class="menu-item">Новая статья</a>
-                    {% else %}
-                        <a href="{% url 'blog-new' %}" class="menu-item">Новый блог</a>
-                    {% endif %}
+                    <a href="{% url 'article-new' %}" class="menu-item">Новая статья</a>
+                    <a href="{% url 'blog-new' %}" class="menu-item">Новый блог</a>
                     <a href="#" class="menu-item">Аккаунт</a>
                     <a href="{% url 'logout' %}" class="menu-item">Выйти</a>
                 {% else %}
