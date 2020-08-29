@@ -1,0 +1,22 @@
+
+{% extends  'base.jhtml' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    {% include 'include/breadcrumbs.jhtml' %}
+        <h2 class="page-title">{{ article.title }}</h2>
+        <p><small>Назание блога: {{ article.blog.name }} | Автор: {{ article.blog.user.username }} | Дата публикации: {{ article.creation_date }}</small></p>
+    <p><small>Теги: {% for tag in article.tags.all %}
+        {{ tag.name }}
+    {% endfor %}
+    </small></p>
+    <div class="content">
+            <div class="section">
+            <div class="section-content">
+                {{ article.text }}
+            </div>
+        </div>
+        </div>
+{% endblock %}
+
+

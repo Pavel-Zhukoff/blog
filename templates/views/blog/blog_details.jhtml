@@ -2,6 +2,8 @@
 {% load widget_tweaks %}
 
 {% block content %}
+        {% include 'include/breadcrumbs.jhtml' %}
+
         <h2 class="page-title">Блог {{ object.name }} {{ object.user.username }}</h2>
 
         <div class="content">
@@ -10,7 +12,7 @@
             <div class="section-content">
                 {% for article in articles %}
                 <div>
-                    <h3>{{ article.title }}</h3>
+                    <h3><a href="{% url 'article-details' article.id %}">{{ article.title }}</a></h3>
                     <p>{{ article.text }}</p>
                     <p><small>Дата публикации: {{ article.creation_date }} | Автор: {{ article.blog.user.username }}</small></p>
                 </div>

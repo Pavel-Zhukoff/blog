@@ -16,7 +16,7 @@
             <div class="section-content">
                 {% for last_article in last_articles %}
                 <div style="margin: .75rem 0">
-                    <h3>{{ last_article.title }}</h3>
+                    <h3><a href="{% url 'article-details' last_article.id %}">{{ last_article.title }}</a></h3>
                     <p>{{ last_article.text }}</p>
                     <p><small>Дата публикации: {{ last_article.creation_date }} | Автор: <a href="{% url 'blog-list-author' last_article.blog.user.username %}">{{ last_article.blog.user.username }}</a></small></p>
                 </div>

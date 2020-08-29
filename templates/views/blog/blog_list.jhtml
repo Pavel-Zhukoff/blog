@@ -2,6 +2,8 @@
 {% load widget_tweaks %}
 
 {% block content %}
+        {% include 'include/breadcrumbs.jhtml' %}
+
         <h2 class="page-title">Блоги</h2>
 
             <div class="section">

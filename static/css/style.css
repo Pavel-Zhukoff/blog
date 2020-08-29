@@ -222,6 +222,22 @@ header .right {
     outline: 0;
 }
 
+.breadcrumbs {
+    padding: 0;
+    margin: 1.5rem 0;
+    list-style: none;
+}
+
+.breadcrumbs .breadcrumbs-item {
+    display: inline-block;
+    color: #000;
+    margin-right: .25rem;
+}
+
+.breadcrumbs .breadcrumbs-item:not(:last-child)::after {
+    content: '>';
+}
+
 @media screen and (max-width: 1024px) {
     .wrapper {
         width: 85%;

@@ -16,6 +16,25 @@ def create_article(request):
         form = ArticleCreationForm()
         form.fields['blog'].queryset = BlogModel.objects.filter(user=request.user)
 
+    data = {
+        'form': form,
+        'breadcrumbs': [
+            {'url': '/article/new', 'title': 'Создание статьи'},
+        ]
+    }
     return render(request,
                 'views/blog/article_new.jhtml',
-                {'form': form})
+                data)
+
+def get_article(request, pk):
+    article = ArticleModel.objects.get(pk=pk)
+    data = {
+        'article': article,
+        'breadcrumbs': [
+            {'url': '/blog/{}'.format(article.blog_id), 'title': article.blog.name},
+            {'url': '/article/{}'.format(article.pk), 'title': article.title},
+        ]
+    }
+    return render(request,
+                  'views/blog/article_details.jhtml',
+                  data)
