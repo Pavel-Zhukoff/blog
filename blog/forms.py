@@ -3,7 +3,7 @@ from django import forms
 from blog.models import ArticleModel, TagModel, BlogModel
 
 
-class ArticleCreationForm(forms.ModelForm):
+class ArticleForm(forms.ModelForm):
 
     title = forms.CharField(max_length=150,
                             label='Заголовок поста',

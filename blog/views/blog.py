@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 
 from blog.models import BlogModel, ArticleModel
@@ -9,6 +10,8 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     fields = ['name']
     model = BlogModel
 
+    login_url = reverse_lazy('login')
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
@@ -17,8 +20,9 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Создание блога'
         context['breadcrumbs'] = [
-            {'url': '/blog/new', 'title': 'Создание блога'},
+            {'url': reverse_lazy('blog-new'), 'title': 'Создание блога'},
         ]
         return context
 
@@ -29,9 +33,10 @@ class BlogIdDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogIdDetailView, self).get_context_data(**kwargs)
+        context['title'] = 'Блог: {}'.format(self.object.name)
         context['articles'] = ArticleModel.objects.filter(blog=self.object)
         context['breadcrumbs'] = [
-            {'url': '/blog/{}'.format(self.object.id), 'title': self.object.name},
+            {'url': reverse_lazy('blog-detail', args=(self.object.id,)), 'title': self.object.name},
         ]
         return context
 
@@ -45,9 +50,10 @@ class BlogAuthorListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogAuthorListView, self).get_context_data(**kwargs)
+        context['title'] = 'Блоги автора {}'.format(self.kwargs['username'])
         context['breadcrumbs'] = [
             {
-                'url': '/blog/{}'.format(self.kwargs['username']),
+                'url': reverse_lazy('blog-list-author', args=(self.kwargs['username'],)),
                 'title': ' Блоги автора {}'.format(self.kwargs['username'])
             },
         ]
@@ -60,7 +66,8 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogListView, self).get_context_data(**kwargs)
+        context['title'] = 'Список блогов'
         context['breadcrumbs'] = [
-            {'url': '/blog', 'title': ' Блоги'},
+            {'url': reverse_lazy('blog-list'), 'title': ' Блоги'},
         ]
         return context

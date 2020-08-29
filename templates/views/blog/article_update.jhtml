@@ -1,0 +1,36 @@
+{% extends  'base.jhtml' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    {% include 'include/breadcrumbs.jhtml' %}
+    <section class="section">
+        <h2 class="section-title">Изменение статьи {{ article.title }}</h2>
+
+        <form method="post" class="form form-centered">
+
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label class="form-label {% if field.required %} form-required {% endif %}" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+                    {% if field.errors %}
+                        {% render_field field class+="form-error" %}
+                        {% for error in field.errors %}
+                            <p class="form-error-message">
+                                {{ error|escape }}
+                            </p>
+                        {% endfor %}
+                    {% else %}
+                        {{ field.as_widget }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="form-group">
+                <button type="submit" class="button-default">Обновить</button>
+            </div>
+        </form>
+    </section>
+{% endblock %}

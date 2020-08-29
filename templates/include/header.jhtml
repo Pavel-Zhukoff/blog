@@ -4,7 +4,7 @@
         <div class="left">
             <nav class="menu">
                 <a href="{% url 'blog-list' %}" class="menu-item">Блоги</a>
-                <a href="#" class="menu-item">Меню</a>
+                <a href="{% url 'article-list' %}" class="menu-item">Меню</a>
             </nav>
         </div>
 
