@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
 from blog.forms import ArticleForm
-from blog.models import BlogModel, ArticleModel
+from blog.models import BlogModel, ArticleModel, TagModel
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -56,9 +56,15 @@ def update_article(request, pk):
 
 
 def get_articles(request):
+    articles = []
+    if request.GET.get('tag') is not None:
+        articles = ArticleModel.objects.all().filter(tags__name__in=request.GET.getlist('tag')).order_by('-creation_date')
+    else:
+        articles = ArticleModel.objects.all().order_by('-creation_date')
     data = {
         'title': 'Статьи',
-        'articles': ArticleModel.objects.all().order_by('-creation_date'),
+        'articles': articles,
+        'tags': TagModel.objects.all(),
         'breadcrumbs': [
             {'url': reverse_lazy('article-list'), 'title': 'Статьи'}
         ]

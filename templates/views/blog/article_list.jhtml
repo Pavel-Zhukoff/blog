@@ -7,7 +7,24 @@
         <h2 class="page-title">Статьи</h2>
 
             <div class="section">
-            <div class="section-content">
+            <div class="sidebar">
+                <h3>Фильтры</h3>
+                <form method="get" action="{% url 'article-list' %}" class="sidebar-filter">
+                    <h4>По тегам: </h4>
+                    {% for tag in tags %}
+                    <div class="form-group">
+                        <label class="form-label checkbox-label" for="tag-{{ tag.pk }}">
+                            {{ tag.name }}
+                        </label>
+                            <input type="checkbox" class="form-checkbox" id="tag-{{ tag.pk }}" name="tag" value="{{ tag.name }}">
+                    </div>
+                    {% endfor %}
+                <div class="form-group">
+                    <button type="submit" class="button-default">Найти</button>
+                </div>
+                </form>
+            </div>
+            <div class="section-content with-sidebar">
                 {% for article in articles %}
                 <div>
                     <h3><a href="{% url 'article-details' article.id %}">{{ article.title }}</a></h3>

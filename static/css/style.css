@@ -76,6 +76,8 @@ header .right {
 .section {
     width: calc(100% - 1rem);
     margin: 0 auto;
+    display: flex;
+    flex-flow: row;
 }
 
 .section:not(:first-of-type) {
@@ -96,6 +98,10 @@ header .right {
     width: 100%;
     display: flex;
     flex-flow: column;
+}
+
+.section .section-content.with-sidebar {
+    width: calc(100% - 250px);
 }
 
 .desk-list {
@@ -237,6 +243,16 @@ header .right {
 .breadcrumbs .breadcrumbs-item:not(:last-child)::after {
     content: '>';
 }
+
+.sidebar {
+    width: 250px;
+}
+
+.sidebar .sidebar-filter {
+    display: flex;
+    flex-flow: column;
+}
+
 
 @media screen and (max-width: 1024px) {
     .wrapper {
