@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
-from account.forms import UserLoginForm, UserRegisterForm
+from blog.account.forms import UserLoginForm, UserRegisterForm
 
 
 class LoginCustomView(UserPassesTestMixin, views.LoginView):

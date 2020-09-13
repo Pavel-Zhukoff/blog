@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 
-from blog.models import BlogModel, ArticleModel
+from blog.blog import BlogModel, ArticleModel
 
 
 class BlogCreateView(LoginRequiredMixin, CreateView):

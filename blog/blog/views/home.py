@@ -2,7 +2,7 @@
 from django.views import View
 from django.shortcuts import render
 
-from blog.models import ArticleModel, BlogModel
+from blog.blog import ArticleModel, BlogModel
 
 
 class HomeView(View):

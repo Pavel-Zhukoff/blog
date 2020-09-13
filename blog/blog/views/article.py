@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from blog.forms import ArticleForm
-from blog.models import BlogModel, ArticleModel, TagModel
+from blog.blog import ArticleForm
+from blog.blog import BlogModel, ArticleModel, TagModel
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -26,8 +26,8 @@ def create_article(request):
         ]
     }
     return render(request,
-                'views/blog/article_new.jhtml',
-                data)
+                  'views/blog/article_new.jhtml',
+                  data)
 
 
 @login_required(login_url=reverse_lazy('login'))

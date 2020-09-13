@@ -13,9 +13,9 @@ services:
           - "80:8080"
 # монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
         volumes:
-            - ./study1/static:/srv/www/study1/static
-            - ./study1/media:/srv/www/study1/media
-            - ./study1/logs:/srv/www/study1/logs
+            - ./blog/static:/srv/www/blog/static
+            - ./blog/media:/srv/www/blog/media
+            - ./blog/logs:/srv/www/blog/logs
             - ./deploy/nginx:/etc/nginx/conf.d
 # и nginx зависит от контейнера python. Т.е. python должен быть запущен первым
         depends_on:
@@ -28,10 +28,10 @@ services:
             dockerfile: deploy/python/Dockerfile
 # монтируем директорию проекта
         volumes:
-            - ./study1:/srv/www/study1
+            - ./blog:/srv/www/blog
         expose:
           - 8000
         ports:
             - 8000:8000
 # запускаем gunicorn
-        command: "gunicorn -c gunicorn.py study1.wsgi"
+        command: "gunicorn -c gunicorn.py blog.wsgi"
